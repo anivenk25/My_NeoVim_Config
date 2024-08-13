@@ -182,8 +182,3 @@ vim.cmd.colorscheme "catppuccin"
 require('nvim-web-devicons').setup({
   default = true;
 })
-
-
-  
-
-
