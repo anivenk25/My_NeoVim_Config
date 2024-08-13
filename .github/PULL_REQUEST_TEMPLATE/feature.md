@@ -8,7 +8,7 @@ Reasoning:
 List why the feature is needed 
 
 Speed (If applicable):
-Show the impact on the speed of nvChad
+Show the impact on the speed of Neovim
 
 Other:
 Anything else relevant goes here
