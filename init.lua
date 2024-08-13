@@ -1,3 +1,9 @@
+-- Show absolute line numbers
+vim.wo.number = true
+
+-- Show relative line numbers (optional)
+vim.wo.relativenumber = true
+
 -- Set leader key
 vim.g.mapleader = " "
 
