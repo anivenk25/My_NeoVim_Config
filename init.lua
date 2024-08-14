@@ -130,6 +130,35 @@ lspconfig.rust_analyzer.setup{}
 lspconfig.gopls.setup{}
 -- Add more LSP servers as needed
 
+-- nvim-cmp Setup for Autocompletion
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }), -- Scroll up in docs
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),  -- Scroll down in docs
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),  -- Trigger autocomplete
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),  -- Close autocomplete menu
+      c = cmp.mapping.close(),  -- Close in command mode
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),  -- Confirm selection
+    ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),  -- Navigate down in menu
+    ['<S-Tab>'] = cmp.mapping(cmp.mapping.select_prev_item(), { 'i', 's' }),  -- Navigate up in menu
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+
 -- Telescope Keybindings
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
