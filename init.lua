@@ -104,6 +104,9 @@ local plugins = {
 
   -- Smooth scrolling
   {"karb94/neoscroll.nvim"},
+  
+  -- Undo Tree
+  {"mbbill/undotree"},
 }
 
 local opts = {}
@@ -163,6 +166,9 @@ cmp.setup({
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+
+-- Undo Tree Keybinding
+vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true }) 
 
 -- Nvim-Tree Setup
 require("nvim-tree").setup()
