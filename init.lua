@@ -115,7 +115,7 @@ require("lazy").setup(plugins, opts)
 -- Treesitter Configuration
 require("nvim-treesitter.configs").setup({
   ensure_installed = {
-    "lua", "python", "c", "cpp", "java", "ruby", "go", "rust", "typescript",
+    "lua", "python", "c", "cpp", "java", "ruby", "go", "rust",
     "html", "css", "bash", "json", "yaml", "xml", "php", "perl", "swift",
     "kotlin", "r", "dart", "elixir", "erlang", "haskell", "scala", "vim",
     "markdown", "dockerfile", "toml", "graphql", "svelte", "vue", "sql",
@@ -128,7 +128,7 @@ require("nvim-treesitter.configs").setup({
 -- LSP Config
 local lspconfig = require("lspconfig")
 lspconfig.pyright.setup{}
-lspconfig.tsserver.setup{}
+lspconfig.ts_ls.setup{}  -- Updated to ts_ls
 lspconfig.rust_analyzer.setup{}
 lspconfig.gopls.setup{}
 -- Add more LSP servers as needed
@@ -161,11 +161,11 @@ cmp.setup({
   })
 })
 
-
 -- Telescope Keybindings
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<leader>f', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fw', builtin.current_buffer_fuzzy_find, { noremap = true, silent = true, desc = "Search within current file" })
 
 -- Undo Tree Keybinding
 vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent = true }) 
@@ -173,7 +173,6 @@ vim.keymap.set('n', '<leader>u', ':UndotreeToggle<CR>', { noremap = true, silent
 -- Nvim-Tree Setup
 require("nvim-tree").setup()
 vim.keymap.set('n', '<C-m>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-
 
 -- Lualine Setup
 require("lualine").setup{
@@ -217,3 +216,4 @@ vim.cmd.colorscheme "catppuccin"
 require('nvim-web-devicons').setup({
   default = true;
 })
+
