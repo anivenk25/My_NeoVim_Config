@@ -38,6 +38,9 @@ local plugins = {
   -- LSP Configurations
   {"neovim/nvim-lspconfig"},
 
+    -- Vim-be-good plugin (Vim practice game)
+  {"ThePrimeagen/vim-be-good"},
+
   -- Autocompletion
   {"hrsh7th/nvim-cmp"},
   {"hrsh7th/cmp-nvim-lsp"},
