@@ -122,7 +122,7 @@ require("nvim-treesitter.configs").setup({
     "html", "css", "bash", "json", "yaml", "xml", "php", "perl", "swift",
     "kotlin", "r", "dart", "elixir", "erlang", "haskell", "scala", "vim",
     "markdown", "dockerfile", "toml", "graphql", "svelte", "vue", "sql",
-    "latex"
+    "latex","zig",
   },
   highlight = { enable = true },
   indent = { enable = true },
