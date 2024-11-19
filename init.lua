@@ -41,6 +41,52 @@ local plugins = {
     -- Vim-be-good plugin (Vim practice game)
   {"ThePrimeagen/vim-be-good"},
 
+  -- snacks plugins 
+  {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    bigfile = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    dashboard = 
+	{enabled = true , 
+	    sections = {
+    { section = "header" },
+    {
+      pane = 2,
+      section = "terminal",
+      cmd = "colorscript -e square",
+      height = 5,
+      padding = 1,
+    },
+    { section = "keys", gap = 1, padding = 1 },
+    { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+    { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+    {
+      pane = 2,
+      icon = " ",
+      title = "Git Status",
+      section = "terminal",
+      enabled = vim.fn.isdirectory(".git") == 1,
+      cmd = "hub status --short --branch --renames",
+      height = 5,
+      padding = 1,
+      ttl = 5 * 60,
+      indent = 3,
+    },
+    { section = "startup" },
+  },
+				},
+  },
+},
+
   -- Autocompletion
   {"hrsh7th/nvim-cmp"},
   {"hrsh7th/cmp-nvim-lsp"},
@@ -91,7 +137,7 @@ local plugins = {
   {"ahmedkhalf/project.nvim"},
 
   -- Startup Screen
-  {"goolord/alpha-nvim"},
+  --{"goolord/alpha-nvim"},
 
   -- Markdown Preview
   {"iamcco/markdown-preview.nvim", run = "cd app && npm install"},
@@ -201,7 +247,7 @@ require("Comment").setup()
 require("project_nvim").setup()
 
 -- Alpha-nvim Setup
-require("alpha").setup(require("alpha.themes.startify").config)
+--require("alpha").setup(require("alpha.themes.startify").config)
 
 -- Which Key Setup
 require("which-key").setup()
